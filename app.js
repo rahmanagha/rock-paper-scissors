@@ -9,10 +9,12 @@ function getHumanChoice() {
     return choice.toLowerCase()
 }
 
+
+
+// Write a function to play one round 
 let computerScore = 0;
 let humanScore = 0;
 
-// Write a function to play one round 
 function playRound(computerChoice,humanChoice) {
     if (computerChoice === humanChoice) {
         console.log("It is a tie. You both chose " + computerChoice)
@@ -44,3 +46,23 @@ function playRound(computerChoice,humanChoice) {
        }
     }
 }
+
+// Write function to play game until someone reaches 5 points
+function playGame() {
+    if (computerScore === 5 || humanScore === 5) {
+        if (computerScore > humanScore) {
+            console.log("Computer won")
+            console.log("Computer - You: " + computerScore + " - " + humanScore)
+        }else {
+            console.log("You won")
+            console.log("Computer - You: " + computerScore + " - " + humanScore)
+        }
+    } else {
+       let computerChoice = getComputerChoice();
+       let humanChoice = getHumanChoice();
+        playRound(computerChoice,humanChoice)
+        playGame();
+    }
+}
+
+playGame();
