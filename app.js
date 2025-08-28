@@ -62,10 +62,8 @@ function playGame() {
     if (computerScore === 5 || humanScore === 5) {
         if (computerScore > humanScore) {
             console.log("Computer won")
-            displayScore();
         }else {
             console.log("You won")
-            displayScore();
         }
     } else {
        let computerChoice = getComputerChoice();
