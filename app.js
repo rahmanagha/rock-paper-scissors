@@ -61,9 +61,9 @@ function playRound(computerChoice,humanChoice) {
 function playGame() {
     if (computerScore === 5 || humanScore === 5) {
         if (computerScore > humanScore) {
-            console.log("Computer won")
+            console.log("Game Over! Computer won.")
         }else {
-            console.log("You won")
+            console.log("Congratulations! You won! Game Over.")
         }
     } else {
        let computerChoice = getComputerChoice();
