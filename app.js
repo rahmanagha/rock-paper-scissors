@@ -2,11 +2,7 @@
 function getComputerChoice() {
     return ["rock","paper","scissors"][Math.floor(Math.random()*3)]
 }
-// Write function to get human choice
-function getHumanChoice() {
-    let choice = prompt("Rock, paper or scissors?")
-    return choice.toLowerCase()
-}
+
 
 
 
@@ -56,6 +52,14 @@ function playRound(computerChoice,humanChoice) {
     }
 }
 
+const documentContainer = document.querySelector(".choices")
+documentContainer.addEventListener('click', e => {
+    if(e.target.value) {
+        let computerChoice = getComputerChoice();
+        playRound(computerChoice, e.target.value)
+    }
+})
+
 // Write function to play game until someone reaches 5 points
 function playGame() {
     if (computerScore === 5 || humanScore === 5) {
@@ -64,12 +68,7 @@ function playGame() {
         }else {
             console.log("Congratulations! You won! Game Over.")
         }
-    } else {
-       let computerChoice = getComputerChoice();
-       let humanChoice = getHumanChoice();
-        playRound(computerChoice,humanChoice)
-        playGame();
-    }
+    } 
 }
 
 playGame();
