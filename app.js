@@ -1,6 +1,16 @@
+// Write an array consist of choices 
+const choices = ["rock","paper","scissors"]
+
+// Write an object to show which item beats what
+const beats = {
+    "rock": "scissors",
+    "paper": "rock",
+    "scissors": "paper"
+}
+
 // Write a function to get random choice for computer
 function getComputerChoice() {
-    return ["rock","paper","scissors"][Math.floor(Math.random()*3)]
+    return choices[Math.floor(Math.random()*choices.length)]
 }
 
 
