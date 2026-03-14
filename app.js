@@ -15,9 +15,24 @@ function getComputerChoice() {
 
 let humanScore = 0;
 let computerScore = 0;
+let gameOver = false;
 
+const resetBtn = document.querySelector("#resetBtn")
 const scoreTable = document.querySelector("#score")
 const info = document.querySelector("#info")
+
+function updateButtonLabel() {
+    resetBtn.textContent = gameOver ? "Play Again" : "Reset";
+}
+function resetGame() {
+     humanScore = 0;
+     computerScore = 0;
+     displayScore(humanScore,computerScore);
+     info.textContent = "Make your choice!";
+     gameOver = false;
+     updateButtonLabel();
+}
+resetBtn.addEventListener('click', resetGame);
 
 function displayScore (humanScore, computerScore) {
     scoreTable.textContent = `You ${humanScore} - ${computerScore} Computer`
@@ -25,6 +40,7 @@ function displayScore (humanScore, computerScore) {
 
 // Write a function to play one round 
 function playRound(humanChoice,computerChoice) {
+    if(gameOver) return;
     if (humanChoice === computerChoice) {
         info.textContent = `It is a tie. You both choose ${humanChoice}`;
         displayScore(humanScore,computerScore);
@@ -39,7 +55,7 @@ function playRound(humanChoice,computerChoice) {
           displayScore(humanScore, computerScore)
        }
     }
-    playGame()
+    checkGameOver();
 }
 
 
@@ -52,17 +68,17 @@ documentContainer.addEventListener('click', e => {
     }
 })
 
-// Write function to play game until someone reaches 5 points
-function playGame() {
+function checkGameOver() {
     if (humanScore === 5 || computerScore === 5) {
+        gameOver = true;
+        updateButtonLabel();
         if (humanScore > computerScore) {
-            info.textContent = "Congratulations! You won! Game Over."
-            humanScore = 0;
-            computerScore = 0;
-        }else {
-            info.textContent = "Game Over! Computer won."
-            humanScore = 0;
-            computerScore = 0;
+            info.textContent = "🎉 Congratulations! You won the game!";
+        } else {
+            info.textContent = "💻 Game over! Computer won.";
         }
-      }
+        return true;
     }
+    return false;
+}
+
