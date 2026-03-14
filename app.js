@@ -19,44 +19,46 @@ function getComputerChoice() {
 // Write a function to play one round 
 let computerScore = 0;
 let humanScore = 0;
-function displayScore () {
-    console.log("Computer - You: " + computerScore + " - " + humanScore)
+const scoreTable = document.querySelector("#score")
+
+
+function displayScore (humanScore, computerScore) {
+    scoreTable.textContent = `You ${humanScore} - ${computerScore} Computer`
 }
 
 function playRound(computerChoice,humanChoice) {
     if (computerChoice === humanChoice) {
-        console.log("It is a tie. You both chose " + computerChoice)
-        displayScore();
+        console.log("It is a tie. You both chose " + computerChoice);
     } else {
        if (computerChoice === "rock") {
         if (humanChoice === "paper") {
             console.log("You won! Paper beats rock!")
             humanScore++
-            displayScore();
+            displayScore(humanScore,computerScore);
         } else if (humanChoice === "scissors") {
             console.log("You lost! Rock beats scissors!")
             computerScore++
-            displayScore();
+            displayScore(humanScore, computerScore);
         }
        } else if (computerChoice === "paper") {
         if (humanChoice === "scissors") {
             console.log("You won! Scissors beats paper!")
             humanScore++
-            displayScore();
+            displayScore(humanScore,computerScore);
         } else if (humanChoice === "rock") {
             console.log("You lost! Paper beats rock!")
             computerScore++
-            displayScore();
+            displayScore(humanScore,computerScore);
         }
        }else {
         if (humanChoice === "rock") {
             console.log("You won! Rock beats scissors!")
             humanScore++
-            displayScore();
+            displayScore(humanScore, computerScore);
         } else if (humanChoice === "paper") {
             console.log("You lost! Scissors beats paper!")
             computerScore++
-            displayScore();
+            displayScore(humanScore, computerScore);
         }
        }
     }
