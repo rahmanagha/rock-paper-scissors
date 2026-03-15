@@ -59,9 +59,9 @@ function playRound(humanChoice,computerChoice) {
 }
 
 
-const documentContainer = document.querySelector(".choices")
+const choiceButtonContainer = document.querySelector(".choices")
 // Attach event listener to every item button
-documentContainer.addEventListener('click', e => {
+choiceButtonContainer.addEventListener('click', e => {
     if(e.target.value) {
         let computerChoice = getComputerChoice();
         playRound(e.target.value, computerChoice)
