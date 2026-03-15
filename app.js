@@ -24,12 +24,16 @@ const info = document.querySelector("#info")
 function updateButtonLabel() {
     resetBtn.textContent = gameOver ? "Play Again" : "Reset";
 }
+function enableChoiceButtons(enable) {
+    document.querySelectorAll(".choice").forEach(btn => btn.disabled = !enable);
+}
 function resetGame() {
      humanScore = 0;
      computerScore = 0;
      displayScore(humanScore,computerScore);
      info.textContent = "Make your choice!";
      gameOver = false;
+     enableChoiceButtons(true);
      updateButtonLabel();
 }
 resetBtn.addEventListener('click', resetGame);
@@ -72,6 +76,7 @@ function checkGameOver() {
     if (humanScore === 5 || computerScore === 5) {
         gameOver = true;
         updateButtonLabel();
+        enableChoiceButtons(false);
         if (humanScore > computerScore) {
             info.textContent = "🎉 Congratulations! You won the game!";
         } else {
